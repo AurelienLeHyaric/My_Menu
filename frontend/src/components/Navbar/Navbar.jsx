@@ -5,15 +5,16 @@ import "./Navbar.scss"
 function Navbar() {
    return (
       <nav className="navbar">
-         <ul>
+         <div className="navbar-logo">My Menu</div>
+         <ul className="navbar-links">
             <li>
-               <a href="#section2">Exemples</a>
+               <a href="#examples">Exemples</a>
             </li>
             <li>
-               <a href="#section3">Tarifs</a>
+               <a href="#pricing">Tarifs</a>
             </li>
             <li>
-               <a href="#section4">Se connecter</a>
+               <a href="#login">Se connecter</a>
             </li>
          </ul>
       </nav>

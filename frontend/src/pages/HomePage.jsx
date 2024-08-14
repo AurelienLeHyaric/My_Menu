@@ -2,7 +2,8 @@
 import React from "react"
 import "./HomePage.scss"
 import Navbar from "../components/Navbar/Navbar"
-import LoginButton from "../components/LoginButton/LoginButton"
+import Button from "../components/Button/Button"
+import Steps from "../components/Steps/Steps"
 import menuImage from "../assets/images/menu.webp"
 
 function HomePage() {
@@ -13,20 +14,31 @@ function HomePage() {
             <section id="section1" className="section section-split">
                <div className="introduction">
                   <h1>Réalisez et diffusez votre menu personnalisé.</h1>
-                  <p>Explorez nos outils pour créer un menu qui s'adapte à vos besoins.</p>
-                  <LoginButton />
+                  <p>Avec My Menu, offrez à votre établissement une identité unique. Concevez votre menu en ligne et diffusez-le sur toutes les plateformes !</p>
+
+                  <Button text="Se connecter" variant="primary" />
                </div>
                <div className="image-content">
                   <img src={menuImage} alt="Menu personnalisé" />
                </div>
             </section>
-            <section id="section2" className="section">
-               <h2>Personnalisez votre menu</h2>
-               <p>Ajoutez des plats, modifiez les descriptions et les prix selon vos préférences.</p>
+            <section id="section2" className="section customize-menu">
+               <div className="customize-text">
+                  <h2>Personnalisez votre menu</h2>
+                  <p>
+                     Créez votre menu en ajoutant vos plats et boissons, et organisez-le selon vos préférences. Pour l'imprimer ou le partager en ligne, téléchargez votre menu dans le format de votre
+                     choix et partagez-le avec vos clients ! Explorez nos outils pour créer un menu qui s'adapte à vos besoins.
+                  </p>
+                  <Button text="Je me lance" variant="secondary" />
+               </div>
+               <div className="customize-images">
+                  <img src={menuImage} alt="Menu personnalisé" />
+                  <img src={menuImage} alt="Menu personnalisé" />
+               </div>
             </section>
             <section id="section3" className="section">
                <h2>Comment créer votre menu ?</h2>
-               <p>Suivez nos étapes simples pour concevoir un menu attrayant et facile à utiliser.</p>
+               <Steps />
             </section>
          </main>
          <footer className="footer">
