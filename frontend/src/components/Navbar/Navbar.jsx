@@ -1,8 +1,7 @@
-// src/components/Navbar/Navbar.js
 import React from "react"
 import "./Navbar.scss"
 
-function Navbar() {
+function Navbar({ onOpenOverlay }) {
    return (
       <nav className="navbar">
          <div className="navbar-logo">My Menu</div>
@@ -14,7 +13,16 @@ function Navbar() {
                <a href="#pricing">Tarifs</a>
             </li>
             <li>
-               <a href="#login">Se connecter</a>
+               <a
+                  href="#"
+                  onClick={(e) => {
+                     e.preventDefault()
+                     onOpenOverlay()
+                  }}
+                  className="login-link"
+               >
+                  Se connecter
+               </a>
             </li>
          </ul>
       </nav>
