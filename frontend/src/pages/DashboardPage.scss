@@ -1,0 +1,47 @@
+.dashboard {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-template-rows: auto;
+   justify-items: center;
+   gap: 10px;
+   margin: 50px;
+
+   .dashboard-welcome {
+      grid-column: span 2;
+      text-align: start;
+      margin-top: 50px;
+      margin-bottom: 80px;
+
+      * {
+         display: inline-flex;
+         margin-right: 80px;
+         text-align: start;
+      }
+
+      .faIdBadge {
+         font-size: 3.5vh;
+         padding: 25px;
+         background-color: white;
+         border-radius: 5px;
+      }
+
+      h1 {
+         vertical-align: top;
+         margin: 0;
+      }
+   }
+
+   .dashboard-button {
+      grid-column: span 3;
+   }
+
+   .dashboard-h3 {
+      grid-column: span 1;
+      padding: 25px;
+      justify-self: left;
+   }
+
+   .dashboard-extra {
+      grid-column: span 3;
+   }
+}

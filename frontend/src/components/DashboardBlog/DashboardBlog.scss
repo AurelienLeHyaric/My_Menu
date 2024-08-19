@@ -1,0 +1,34 @@
+.dasharticle {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 295px;
+   height: 340px;
+   border: 0px;
+   border-radius: 5px;
+   margin: 12px;
+   cursor: pointer;
+   background-color: white;
+   transition: box-shadow 0.3s ease, transform 0.3s ease;
+   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08);
+
+   .dashimg {
+      border-radius: 5px 5px 0 0;
+      width: 295px;
+      height: 65%;
+      object-fit: cover;
+   }
+
+   .dashtitle {
+      padding: 20px;
+      height: 35%;
+      font-size: 1.5vh;
+      align-content: center;
+   }
+}
+
+.dasharticle:hover {
+   /* Augmentation de l'ombre au survol */
+   box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.1);
+   transform: scale(1.05);
+}

@@ -1,8 +1,11 @@
 import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import HomePage from "./pages/HomePage"
-import Dashboard from "./pages/Dashboard"
-
+import DashboardLayout from "./components/DashboardLayout/DashboardLayout"
+import Dashboard from "./pages/DashboardPage"
+import MesMenus from "./pages/MenusPage"
+import MonRestaurant from "./pages/RestaurantPage"
+import MonCompte from "./pages/AccountPage"
 import "./App.scss"
 
 function App() {
@@ -11,7 +14,14 @@ function App() {
          <Router>
             <Routes>
                <Route path="/" element={<HomePage />} />
-               <Route path="/dashboard" element={<Dashboard />} />
+               {/* Route parent pour le DashboardLayout */}
+               <Route path="/dashboard" element={<DashboardLayout />}>
+                  {/* Sous-routes */}
+                  <Route index element={<Dashboard />} /> {/* Par défaut, redirige vers /dashboard */}
+                  <Route path="mesmenus" element={<MesMenus />} />
+                  <Route path="monrestaurant" element={<MonRestaurant />} />
+                  <Route path="moncompte" element={<MonCompte />} />
+               </Route>
             </Routes>
          </Router>
       </div>
