@@ -4,7 +4,9 @@ import "./DashboardBlog.scss"
 function DashboardBlog({ src, alt, title, onClick }) {
    return (
       <article className="dasharticle" onClick={onClick}>
-         <img className="dashimg" src={src} alt={alt} />
+         <div className="dasharticle-container">
+            <img className="dashimg" src={src} alt={alt} />
+         </div>
          <span className="dashtitle">{title}</span>
       </article>
    )

@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .dashbutton {
    display: flex;
    flex-direction: column;
@@ -26,4 +28,5 @@
 .dashbutton:hover {
    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.1);
    transform: scale(1.05);
+   color: $color-tertiary;
 }

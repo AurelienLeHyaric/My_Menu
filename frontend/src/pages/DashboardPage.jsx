@@ -1,5 +1,6 @@
 import React from "react"
 import "./DashboardPage.scss"
+import { useNavigate } from "react-router-dom"
 import DashboardButton from "../components/DashboardButton/DashboardButton"
 import DashboardBlog from "../components/DashboardBlog/DashboardBlog"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -10,6 +11,11 @@ import { faPrint } from "@fortawesome/free-solid-svg-icons"
 import menuImage from "../assets/images/menu.webp"
 
 function Dashboard() {
+   const navigate = useNavigate()
+
+   const handleAddMenuClick = () => {
+      navigate("/dashboard/mesmenus/addmenu")
+   }
    return (
       <div className="dashboard">
          <div className="dashboard-welcome">
@@ -19,7 +25,7 @@ function Dashboard() {
             </h1>
          </div>
          <div className="dashboard-button"></div>
-         <DashboardButton text="Créer un menu" icon={faFileLines} />
+         <DashboardButton text="Créer un menu" icon={faFileLines} onClick={handleAddMenuClick} />
          <DashboardButton text="Diffuser un menu" icon={faShareFromSquare} />
          <DashboardButton text="Imprimer un menu" icon={faPrint} />
          <div className="dashboard-h3">

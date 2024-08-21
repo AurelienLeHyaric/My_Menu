@@ -34,7 +34,12 @@
          display: block;
          padding: 20px 0 20px 20px;
          text-decoration: none;
-         width: 100%;
+      }
+
+      .active-link {
+         background-color: $color-tertiary;
+         color: $color-light;
+         border-radius: 10px;
       }
    }
 

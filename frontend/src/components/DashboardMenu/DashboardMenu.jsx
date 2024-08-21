@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import "./DashboardMenu.scss"
 
 function Menu() {
@@ -10,13 +10,19 @@ function Menu() {
          <div className="menu-sections">
             <ul>
                <li>
-                  <Link to="/dashboard">Dashboard</Link>
+                  <NavLink to="/dashboard" end className={({ isActive }) => (isActive ? "active-link" : "")}>
+                     Dashboard
+                  </NavLink>
                </li>
                <li>
-                  <Link to="/dashboard/mesmenus">Mes menus</Link>
+                  <NavLink to="/dashboard/mesmenus" className={({ isActive }) => (isActive ? "active-link" : "")}>
+                     Mes menus
+                  </NavLink>
                </li>
                <li>
-                  <Link to="/dashboard/moncompte">Mon compte</Link>
+                  <NavLink to="/dashboard/moncompte" className={({ isActive }) => (isActive ? "active-link" : "")}>
+                     Mon compte
+                  </NavLink>
                </li>
             </ul>
          </div>
@@ -24,13 +30,13 @@ function Menu() {
          <div className="menu-sections2">
             <ul>
                <li>
-                  <Link to="/dashboard/moncompte">Se déconnecter</Link>
+                  <NavLink to="/dashboard/moncompte">Se déconnecter</NavLink>
                </li>
                <li>
-                  <Link to="/dashboard/moncompte">Mentions légales</Link>
+                  <NavLink to="/dashboard/moncompte">Mentions légales</NavLink>
                </li>
                <li>
-                  <Link to="/dashboard/moncompte">Tous droits réservés</Link>
+                  <NavLink to="/dashboard/moncompte">Tous droits réservés</NavLink>
                </li>
             </ul>
          </div>

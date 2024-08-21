@@ -6,6 +6,7 @@ import Dashboard from "./pages/DashboardPage"
 import MesMenus from "./pages/MenusPage"
 import MonRestaurant from "./pages/RestaurantPage"
 import MonCompte from "./pages/AccountPage"
+import AddMenuPage from "./pages/AddMenuPage"
 import "./App.scss"
 
 function App() {
@@ -17,8 +18,9 @@ function App() {
                {/* Route parent pour le DashboardLayout */}
                <Route path="/dashboard" element={<DashboardLayout />}>
                   {/* Sous-routes */}
-                  <Route index element={<Dashboard />} /> {/* Par défaut, redirige vers /dashboard */}
+                  <Route index element={<Dashboard />} />
                   <Route path="mesmenus" element={<MesMenus />} />
+                  <Route path="mesmenus/addmenu" element={<AddMenuPage />} />
                   <Route path="monrestaurant" element={<MonRestaurant />} />
                   <Route path="moncompte" element={<MonCompte />} />
                </Route>
