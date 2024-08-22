@@ -39,3 +39,15 @@
       border-color: $color-primary;
    }
 }
+
+/* Variante boutton non actif */
+.button.inactive {
+   background-color: rgb(199, 194, 194);
+   color: $color-dark;
+   border: 2px solid $color-primary;
+
+   &:active {
+      background-color: $color-tertiary;
+      border-color: $color-tertiary;
+   }
+}
