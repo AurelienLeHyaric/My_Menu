@@ -13,19 +13,32 @@
    z-index: 1000;
 }
 
-.overlay-content {
+.content {
    display: flex;
    flex-direction: column;
-   background-color: $color-secondary;
-   padding: 80px 40px;
-   border-radius: 10px;
-   width: 500px;
-   height: 600px;
-   max-width: 90%;
-   text-align: center;
    position: relative;
    align-items: center;
    justify-content: center;
+   background-color: $color-secondary;
+   border-radius: 5px;
+   width: 553px;
+   height: 617px;
+}
+
+form {
+   margin: 0;
+
+   .category-name {
+      text-align: left;
+      margin-bottom: 5px;
+      font-size: 1rem;
+   }
+}
+
+input {
+   display: block;
+   margin-bottom: 20px;
+   height: 29px;
 }
 
 .close-button {

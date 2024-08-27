@@ -45,6 +45,7 @@
    background-color: rgb(199, 194, 194);
    color: $color-dark;
    border: 2px solid $color-primary;
+   cursor: not-allowed;
 
    &:active {
       background-color: $color-tertiary;
