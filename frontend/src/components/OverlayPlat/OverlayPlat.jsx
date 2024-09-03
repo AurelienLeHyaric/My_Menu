@@ -21,7 +21,6 @@ function PlatOverlay({ onClose }) {
 
    const handleSubmit = (e) => {
       e.preventDefault()
-
       if (platName.trim() && platPrice.trim() && platDescription.trim()) {
          console.log("Form submitted:", {
             name: platName,
@@ -56,7 +55,7 @@ function PlatOverlay({ onClose }) {
             <button className="close-button" onClick={onClose}>
                &times;
             </button>
-            <p>Ajoutez vos :</p>
+            <p>Ajoutez vos 'nom de la catégorie' :</p>
             <form onSubmit={handleSubmit}>
                <div className="image-upload">
                   <label htmlFor="file-input">
@@ -73,17 +72,10 @@ function PlatOverlay({ onClose }) {
                   <input id="file-input" type="file" accept="image/*" onChange={handleImageChange} />
                </div>
                <div className="input-row">
-                  <div className="input-group plat-group">
-                     <p className="plat-name">Nom du plat</p>
-                     <input type="text" value={platName} onChange={(e) => setPlatName(e.target.value)} />
-                  </div>
-                  <div className="input-group price-group">
-                     <p className="plat-price">Prix</p>
-                     <input type="number" value={platPrice} onChange={(e) => setPlatPrice(e.target.value)} />
-                  </div>
+                  <InputField label="Nom du plat" type="text" value={platName} onChange={setPlatName} className="plat-group" />
+                  <InputField label="Prix" type="number" value={platPrice} onChange={setPlatPrice} className="price-group" />
                </div>
-               <p className="plat-description">Description</p>
-               <input type="text" value={platDescription} onChange={(e) => setPlatDescription(e.target.value)} />
+               <InputField label="Description" type="text" value={platDescription} onChange={setPlatDescription} className="plat-description" />
                <Button
                   text={"Valider"}
                   variant={platName.trim() && platPrice.trim() && platDescription.trim() ? "primary" : "inactive"}
@@ -94,5 +86,12 @@ function PlatOverlay({ onClose }) {
       </div>
    )
 }
+
+const InputField = ({ label, type, value, onChange, className }) => (
+   <div className={`input-group ${className}`}>
+      <p>{label}</p>
+      <input type={type} value={value} onChange={(e) => onChange(e.target.value)} />
+   </div>
+)
 
 export default PlatOverlay
