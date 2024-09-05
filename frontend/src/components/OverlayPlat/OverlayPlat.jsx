@@ -4,7 +4,7 @@ import Button from "../Button/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faImage } from "@fortawesome/free-solid-svg-icons"
 
-function PlatOverlay({ onClose }) {
+function PlatOverlay({ onClose, onAddPlat, categoryName }) {
    const [platName, setPlatName] = useState("")
    const [platPrice, setPlatPrice] = useState("")
    const [platDescription, setPlatDescription] = useState("")
@@ -21,17 +21,22 @@ function PlatOverlay({ onClose }) {
 
    const handleSubmit = (e) => {
       e.preventDefault()
-      if (platName.trim() && platPrice.trim() && platDescription.trim()) {
-         console.log("Form submitted:", {
+      if (platName.trim() && platPrice.trim()) {
+         const newPlat = {
             name: platName,
             price: platPrice,
             description: platDescription,
             image: platImage,
-         })
-         onClose()
+         }
+         onAddPlat(newPlat) // Envoyer le plat complet
+         setPlatName("")
+         setPlatPrice("")
+         setPlatDescription("")
          if (platImage) {
             URL.revokeObjectURL(platImage)
+            setPlatImage(null)
          }
+         onClose()
       } else {
          console.log("Form not submitted: some fields are empty.")
       }
@@ -55,7 +60,7 @@ function PlatOverlay({ onClose }) {
             <button className="close-button" onClick={onClose}>
                &times;
             </button>
-            <p>Ajoutez vos 'nom de la catégorie' :</p>
+            <p>Ajoutez un plat à '{categoryName}' :</p>
             <form onSubmit={handleSubmit}>
                <div className="image-upload">
                   <label htmlFor="file-input">
@@ -75,11 +80,11 @@ function PlatOverlay({ onClose }) {
                   <InputField label="Nom du plat" type="text" value={platName} onChange={setPlatName} className="plat-group" />
                   <InputField label="Prix" type="number" value={platPrice} onChange={setPlatPrice} className="price-group" />
                </div>
-               <InputField label="Description" type="text" value={platDescription} onChange={setPlatDescription} className="plat-description" />
+               <InputField label="Description (optionnel)" type="text" value={platDescription} onChange={setPlatDescription} className="plat-description" />
                <Button
                   text={"Valider"}
-                  variant={platName.trim() && platPrice.trim() && platDescription.trim() ? "primary" : "inactive"}
-                  disabled={!(platName.trim() && platPrice.trim() && platDescription.trim())}
+                  variant={platName.trim() && platPrice.trim() ? "primary" : "inactive"} // Activer le bouton seulement si les deux champs sont remplis
+                  disabled={!platName.trim() || !platPrice.trim()} // Désactiver le bouton si l'un des champs est vide
                />
             </form>
          </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import "./OverlayCategory.scss"
 import Button from "../Button/Button"
 
-function CategoryOverlay({ onClose }) {
+function CategoryOverlay({ onClose, onAddCategory }) {
    const [categoryName, setCategoryName] = useState("")
 
    const handleOverlayClick = (e) => {
@@ -17,6 +17,8 @@ function CategoryOverlay({ onClose }) {
       // Vérifie si le bouton est actif avant de soumettre
       if (categoryName.trim()) {
          console.log("Form submitted:", categoryName)
+         onAddCategory(categoryName.trim()) // Appelle la fonction pour ajouter la catégorie
+         setCategoryName("") // Réinitialise le champ de saisie après soumission
          onClose() // Ferme l'overlay après la soumission
       } else {
          console.log("Form not submitted: category name is empty.")
