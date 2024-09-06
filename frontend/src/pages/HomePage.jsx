@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import "./HomePage.scss"
 import Navbar from "../components/Navbar/Navbar"
 import Button from "../components/Button/Button"
-import Steps from "../components/Steps/Steps"
 import OverlayManager from "../components/OverlayManager/OverlayManager"
 import menuImage from "../assets/images/menu.webp"
 
@@ -48,7 +47,20 @@ function HomePage() {
             </section>
             <section id="section3" className="section">
                <h2>Comment créer votre menu ?</h2>
-               <Steps />
+               <div className="creation-steps">
+                  <div className="step">
+                     <div className="step-number">1</div>
+                     <p>Listez l'ensemble de vos boissons, entrées, plats, desserts, et accompagnements à afficher sur votre menu.</p>
+                  </div>
+                  <div className="step">
+                     <div className="step-number">2</div>
+                     <p>Choisissez le style qui correspond à votre restaurant, incluant le logo, les couleurs, et la typographie.</p>
+                  </div>
+                  <div className="step">
+                     <div className="step-number">3</div>
+                     <p>Enregistrez votre menu en format PDF et diffusez-le sur vos plateformes de vente en ligne.</p>
+                  </div>
+               </div>
             </section>
 
             {/* Overlay Manager */}

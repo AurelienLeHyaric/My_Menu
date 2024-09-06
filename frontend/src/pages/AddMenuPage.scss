@@ -91,3 +91,33 @@
       margin-right: 10px;
    }
 }
+
+.step {
+   margin-bottom: 30px;
+}
+
+.step .title {
+   display: flex;
+   align-items: center;
+}
+
+.step .number {
+   background-color: black;
+   color: white;
+   border-radius: 50%;
+   padding: 10px;
+   margin-right: 10px;
+}
+
+.step .title h2 {
+   font-size: 1.5em;
+   margin: 0;
+}
+
+.step.active {
+   display: block;
+}
+
+.step:not(.active) {
+   display: none;
+}
