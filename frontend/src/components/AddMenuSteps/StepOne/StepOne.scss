@@ -27,7 +27,7 @@
       }
 
       .plat-list {
-         margin-top: 0;
+         margin: 0;
          .plat-item {
             text-align: left;
             list-style: none;
@@ -38,6 +38,11 @@
       svg {
          padding: 0 0 0 10px;
          opacity: 85%;
+      }
+
+      > button {
+         display: block;
+         margin: 10px 60px;
       }
    }
    button {

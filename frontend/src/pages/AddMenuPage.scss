@@ -7,6 +7,7 @@
       flex-direction: column;
       width: 55%;
       margin: 100px;
+      overflow: hidden;
 
       .create-section {
          width: 100%;
@@ -21,39 +22,84 @@
             background-color: white;
             border-radius: 5px;
             margin-bottom: 30px;
+            max-height: 820px;
+            overflow: auto;
+         }
+
+         .step:not(.active) {
+            display: none;
          }
       }
 
       Button {
          margin-bottom: 10px;
+
          padding: 10px;
       }
+   }
+
+   Button {
+      text-align: center;
+      margin-right: 20px;
    }
 
    // Zone de previsualisation du menu
 
    .preview {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       min-width: 45%;
-      border-left: 1px solid black;
       background-color: #363636;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       .previewmenu {
          width: 424px;
          height: 644px;
          background-color: white;
-         border-radius: 7px;
-         top: 50%;
+         padding: 20px;
+         border-radius: 8px;
+         box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+         overflow: hidden;
+
+         h2 {
+            text-align: center;
+            font-size: 2rem;
+         }
+
+         h3 {
+            text-align: left;
+            margin-top: 20px;
+            border-bottom: 1px solid black;
+            padding-bottom: 10px;
+            font-size: 1.3rem;
+         }
+
+         ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+               display: flex;
+               justify-content: space-between;
+               text-align: left;
+               padding: 10px 0;
+
+               .previewplat {
+                  display: flex;
+                  flex-direction: column;
+
+                  .plat {
+                     font-weight: 500;
+                  }
+
+                  .description {
+                     font-size: 0.9rem;
+                     color: #4f4f4f;
+                     font-style: italic;
+                  }
+               }
+            }
+         }
       }
    }
-}
-
-.step.active {
-   display: block;
-}
-
-.step:not(.active) {
-   display: none;
 }

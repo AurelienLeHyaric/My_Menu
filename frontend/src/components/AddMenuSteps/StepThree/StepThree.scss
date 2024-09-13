@@ -1,0 +1,23 @@
+.step-three {
+   .zone-title {
+      color: #333;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: left;
+      display: flex;
+      align-items: center;
+
+      .number {
+         color: white;
+         background-color: black;
+         border-radius: 50%;
+         padding: 0 5px;
+         margin: 0 20px;
+      }
+   }
+   .boutons-export {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+}

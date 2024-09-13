@@ -1,16 +1,19 @@
 import React from "react"
 import Button from "../../Button/Button"
+import "./StepThree.scss"
 
 function StepThree({ onExport }) {
    return (
       <div className="step-three">
-         <div className="title">
+         <div className="zone-title">
             <p className="number">3</p>
             <h2>Exportez & diffusez votre menu</h2>
          </div>
-         <Button text={"Export PDF"} onClick={() => onExport("pdf")} />
-         <Button text={"Export Deliveroo"} onClick={() => onExport("deliveroo")} />
-         <Button text={"Export Instagram"} onClick={() => onExport("instagram")} />
+         <div className="boutons-export">
+            <Button text={"Exporter en PDF"} onClick={() => onExport("pdf")} />
+            <Button text={"Diffusez sur Deliveroo"} onClick={() => onExport("deliveroo")} />
+            <Button text={"Partager sur Instagram"} onClick={() => onExport("instagram")} />
+         </div>
       </div>
    )
 }
