@@ -7,12 +7,12 @@ function StepThree({ onExport }) {
       <div className="step-three">
          <div className="zone-title">
             <p className="number">3</p>
-            <h2>Exportez & diffusez votre menu</h2>
+            <h2>Exportez & diffusez</h2>
          </div>
          <div className="boutons-export">
             <Button text={"Exporter en PDF"} onClick={() => onExport("pdf")} />
-            <Button text={"Diffusez sur Deliveroo"} onClick={() => onExport("deliveroo")} />
-            <Button text={"Partager sur Instagram"} onClick={() => onExport("instagram")} />
+            <Button text={"Diffusez sur Deliveroo"} onClick={() => window.open("https://deliveroo.fr/fr/", "_blank")} />
+            <Button text={"Partager sur Instagram"} onClick={() => window.open("https://www.instagram.com/", "_blank")} />
          </div>
       </div>
    )
