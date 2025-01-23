@@ -3,13 +3,15 @@ import { useNavigate } from "react-router-dom"
 import "./MenusPage.scss"
 import Button from "../components/Button/Button"
 import menuImage from "../assets/images/menu.webp"
+import { APP_ROUTES } from "../utils/constants"
 
 function MesMenus() {
    const navigate = useNavigate()
 
    const handleAddMenuClick = () => {
-      navigate("/dashboard/mesmenus/addmenu")
+      navigate(APP_ROUTES.ADD_MENU)
    }
+
    return (
       <div className="menuspage">
          <h1>Mes Menus</h1>

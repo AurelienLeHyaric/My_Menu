@@ -20,9 +20,9 @@ function Menu() {
                   </NavLink>
                </li>
                <li>
-                  <NavLink to="/dashboard/moncompte" className={({ isActive }) => (isActive ? "active-link" : "")}>
+                  {/*                   <NavLink to="/dashboard/moncompte" className={({ isActive }) => (isActive ? "active-link" : "")}>
                      Mon compte
-                  </NavLink>
+                  </NavLink> */}
                </li>
             </ul>
          </div>

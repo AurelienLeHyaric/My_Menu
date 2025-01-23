@@ -1,15 +1,17 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import "./AddMenuPage.scss"
 import Button from "./../components/Button/Button"
 import StepOne from "./../components/AddMenuSteps/StepOne/StepOne"
 import StepTwo from "./../components/AddMenuSteps/StepTwo/StepTwo"
 import StepThree from "./../components/AddMenuSteps/StepThree/StepThree"
+import html2pdf from "html2pdf.js"
 
 function AddMenu() {
    const [currentStep, setCurrentStep] = useState(1)
    const [categories, setCategories] = useState([])
    const [plats, setPlats] = useState({})
    const [customization, setCustomization] = useState({ font: "Georgia", color: "#000000" })
+   const previewRef = useRef(null) // Référence à la section de prévisualisation
 
    const handleNextStep = () => setCurrentStep((prevStep) => prevStep + 1)
    const handlePrevStep = () => setCurrentStep((prevStep) => prevStep - 1)
@@ -18,6 +20,30 @@ function AddMenu() {
       setCustomization(newCustomization)
    }
 
+   // Fonction pour exporter le contenu de la prévisualisation en PDF
+   const handleExportPDF = () => {
+      const element = previewRef.current
+      const opt = {
+         margin: [0.5, 0.5],
+         filename: "menu.pdf",
+         image: { type: "jpeg", quality: 0.98 },
+         html2canvas: { scale: 2, useCORS: true }, // Améliore la résolution avec scale
+         jsPDF: { unit: "pt", format: "a4", orientation: "portrait" },
+      }
+      html2pdf().from(element).set(opt).save()
+   }
+
+   const handleSave = () => {
+      const element = previewRef.current
+      const opt = {
+         margin: [0.5, 0.5],
+         filename: "menu.pdf",
+         image: { type: "jpeg", quality: 0.98 },
+         html2canvas: { scale: 2, useCORS: true },
+         jsPDF: { unit: "pt", format: "a4", orientation: "portrait" },
+      }
+      html2pdf().from(element).set(opt).save()
+   }
    return (
       <div className="addmenupage">
          <div className="main">
@@ -36,18 +62,20 @@ function AddMenu() {
                </div>
 
                {/* Étape 3 : Exportez votre menu */}
-               <div className={`step ${currentStep === 3 ? "active" : ""}`}>{currentStep === 3 && <StepThree onExport={() => {}} />}</div>
+               <div className={`step ${currentStep === 3 ? "active" : ""}`}>{currentStep === 3 && <StepThree onExport={handleExportPDF} />}</div>
 
                {/* Bouton pour passer à l'étape précédente */}
                {currentStep > 1 && <Button text={"Étape précédente"} onClick={handlePrevStep} />}
 
                {/* Bouton pour passer à l'étape suivante */}
                {currentStep < 3 && <Button text={"Étape suivante"} onClick={handleNextStep} />}
+
+               {currentStep === 3 && <Button text={"Sauvegarder"} onClick={handleSave} />}
             </div>
          </div>
 
          {/* Prévisualisation en temps réel */}
-         <div className="preview">
+         <div className="preview" ref={previewRef}>
             <div
                className="previewmenu"
                style={{
