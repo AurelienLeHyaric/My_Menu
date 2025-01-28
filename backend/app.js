@@ -1,7 +1,8 @@
 import express from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
-import testRoute from "./routes/testRoute.js" // Import de la route
+import menuRoutes from "./routes/menuRoutes.js"
+import userRoutes from "./routes/userRoutes.js"
 
 dotenv.config()
 
@@ -17,13 +18,14 @@ mongoose
    .then(() => console.log("Connexion à MongoDB réussie !"))
    .catch((error) => console.error("Connexion à MongoDB échouée :", error))
 
-// Routes
+// Routes principales
 app.get("/", (req, res) => {
    res.send("Hello, My Menu Backend with Express 5!")
 })
-app.use("/api/test", testRoute)
+app.use("/api/users", userRoutes)
+app.use("/api/menus", menuRoutes) // Association des routes des menus
 
-// Gestionnaire d'erreurs
+// Gestionnaire d'erreurs global
 app.use((err, req, res, next) => {
    console.error(err.stack)
    res.status(500).send("Une erreur est survenue !")

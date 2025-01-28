@@ -1,10 +1,9 @@
-const mongoose = require("mongoose")
-const uniqueValidator = require("mongoose-unique-validator")
+import mongoose from "mongoose"
 
 const userSchema = new mongoose.Schema({
    email: { type: String, required: true, unique: true },
 })
 
-userSchema.plugin(uniqueValidator, { message: "{PATH} doit être unique." })
+const User = mongoose.model("User", userSchema)
 
-module.exports = mongoose.model("User", userSchema)
+export default User

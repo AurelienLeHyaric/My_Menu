@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+import mongoose from "mongoose"
 
 const menuSchema = new mongoose.Schema(
    {
@@ -10,7 +10,9 @@ const menuSchema = new mongoose.Schema(
          color: { type: String, default: "#000000" },
       },
    },
-   { timestamps: true }
+   { timestamps: true } // Ajoute createdAt et updatedAt automatiquement
 )
 
-module.exports = mongoose.model("Menu", menuSchema)
+const Menu = mongoose.model("Menu", menuSchema)
+
+export default Menu
