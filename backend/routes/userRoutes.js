@@ -1,9 +1,10 @@
-import express from "express"
-import { signup, login } from "../controllers/userController.js"
+import { Router } from "express"
+import { sendLoginLink, validateLoginLink, logout } from "../controllers/userController.js"
 
-const router = express.Router()
+const router = Router()
 
-router.post("/signup", signup) // Inscription d'un utilisateur
-router.post("/login", login) // Connexion avec token JWT
+router.post("/login", sendLoginLink) // Inscription/connexion d'un utilisateur
+router.get("/validate-login", validateLoginLink) // Connexion avec token JWT
+router.post("/logout", logout)
 
 export default router

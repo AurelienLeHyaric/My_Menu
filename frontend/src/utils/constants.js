@@ -1,16 +1,15 @@
-const API_URL = "http://localhost:4000"
+const API_URL = "http://localhost:3001"
 
 export const API_ROUTES = {
-   SIGN_UP: `${API_URL}/api/auth/signup`,
-   SIGN_IN: `${API_URL}/api/auth/login`,
-   SEND_MAGIC_LINK: `${API_URL}/api/auth/send-magic-link`,
-   VALIDATE_TOKEN: `${API_URL}/api/auth/validate-token`,
+   LOGIN: `${API_URL}/api/users/login`, // Envoi du magic link
+   VALIDATE_LOGIN: `${API_URL}/api/users/validate-login`, // Validation du token
    USER_MENUS: `${API_URL}/api/menus`,
+   LOGOUT: `${API_URL}/api/users/logout`,
 }
 
 export const APP_ROUTES = {
    HOME: "/",
-   SIGN_IN: "/connexion",
+   SIGN_IN: "/login",
    DASHBOARD: "/dashboard",
    ADD_MENU: "/dashboard/mesmenus/addmenu",
    MENUS: "/dashboard/mesmenus",

@@ -1,6 +1,7 @@
 @import "styles/variables";
 
-body {
+body,
+button {
    text-align: center;
    margin: 0;
    background-color: $color-light;

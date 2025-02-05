@@ -1,30 +1,41 @@
+// ValidationOverlay.jsx
 import React, { useEffect, useState } from "react"
-import "../../styles/overlayConnexion.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
-import { useNavigate, useSearchParams } from "react-router-dom"
-import axios from "axios"
+import { useNavigate } from "react-router-dom"
 import { API_ROUTES } from "../../utils/constants"
+import "../../styles/overlayConnexion.scss"
 
-function ValidationOverlay({ onClose }) {
+function ValidationOverlay({ token, onClose }) {
    const navigate = useNavigate()
-   const [searchParams] = useSearchParams()
-   const token = "mocked-token" // Récupération du token dans l'URL
    const [validationMessage, setValidationMessage] = useState("")
 
    useEffect(() => {
+      // Si aucun token n'est détecté, on ferme immédiatement l'overlay
+      if (!token) {
+         onClose()
+         return
+      }
+
       const validateToken = async () => {
          try {
-            const response = await axios.post(API_ROUTES.VALIDATE_TOKEN, { token })
-            console.log("Réponse de l'API de validation :", response)
-            if (response.status === 200) {
+            // Appel à l'endpoint de validation en passant le token en query string
+            const response = await fetch(`${API_ROUTES.VALIDATE_LOGIN}?token=${token}`, {
+               method: "GET",
+               credentials: "include", // Pour envoyer/recevoir le cookie
+               headers: {
+                  "Content-Type": "application/json",
+               },
+            })
+            const data = await response.json()
+
+            if (response.ok) {
                setValidationMessage("Connexion réussie !")
-               // Stocke éventuellement le token ou l'état de l'utilisateur connecté
-               localStorage.setItem("authToken", response.data.token)
-               // Redirige vers le dashboard
+               localStorage.setItem("authToken", data.userId)
+               // Redirection vers le dashboard après quelques instants
                setTimeout(() => {
                   navigate("/dashboard")
-               }, 1500) // Temporisation avant la redirection
+               }, 1500)
             } else {
                setValidationMessage("Le lien est invalide ou expiré.")
             }
@@ -34,31 +45,20 @@ function ValidationOverlay({ onClose }) {
          }
       }
 
-      if (token) {
-         validateToken()
-      } else {
-         setValidationMessage("Aucun token trouvé dans l'URL.")
-      }
-   }, [token, navigate])
+      validateToken()
+   }, [token, navigate, onClose])
 
    return (
-      <div className="overlay">
-         <div className="overlay-content">
-            <button className="close-button" onClick={onClose}>
-               &times;
-            </button>
-            <div className="icon-container">
-               <div className="icon-placeholder">
-                  <FontAwesomeIcon icon={faCircleCheck} beat className="custom-animation faCircleCheck" />
-               </div>
+      <div className="overlay-content">
+         <button className="close-button" onClick={onClose}>
+            &times;
+         </button>
+         <div className="icon-container">
+            <div className="icon-placeholder">
+               <FontAwesomeIcon icon={faCircleCheck} beat className="custom-animation faCircleCheck" />
             </div>
-            <p>{validationMessage}</p>
-            {validationMessage === "Connexion réussie !" && (
-               <button type="button" className="login-button" onClick={() => navigate("/dashboard")}>
-                  OK
-               </button>
-            )}
          </div>
+         <p>{validationMessage}</p>
       </div>
    )
 }

@@ -3,7 +3,6 @@ import "../../styles/overlayConnexion.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUserTie } from "@fortawesome/free-solid-svg-icons"
 import Button from "../Button/Button"
-import axios from "axios"
 import { API_ROUTES } from "../../utils/constants"
 
 function LoginOverlay({ onNext, onClose }) {
@@ -13,15 +12,30 @@ function LoginOverlay({ onNext, onClose }) {
 
    const handleSubmit = async (e) => {
       e.preventDefault()
-      console.log("Email soumis :", email) // Vérifie que l'e-mail est bien récupéré
       try {
-         const response = await axios.post(API_ROUTES.SEND_MAGIC_LINK, { email })
+         // D'abord, appelle l'endpoint de logout pour effacer l'ancien cookie
+         await fetch(`${API_ROUTES.LOGOUT}`, {
+            method: "POST",
+            credentials: "include",
+         })
+
+         // Ensuite, procède à la demande d'envoi du magic link
+         const response = await fetch(API_ROUTES.LOGIN, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+         })
+
          if (response.status === 200) {
             setSuccessMessage("Un lien de connexion vous a été envoyé par e-mail.")
-            onNext() // Passe à l'étape suivante après envoi réussi
+            onNext()
          }
       } catch (error) {
-         setErrorMessage("Une erreur est survenue. Veuillez réessayer.")
+         console.error("Erreur lors de l'envoi du Magic Link :", error)
+         setErrorMessage("Une erreur est survenue.")
       }
    }
 
@@ -46,9 +60,6 @@ function LoginOverlay({ onNext, onClose }) {
                </form>
                {errorMessage && <p className="error">{errorMessage}</p>}
                {successMessage && <p className="success">{successMessage}</p>}
-               <a href="#" className="help-link">
-                  Besoin d’aide ?
-               </a>
             </div>
          </div>
       </div>

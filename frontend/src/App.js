@@ -15,7 +15,6 @@ function App() {
             <Routes>
                {/* Route pour la page d'accueil */}
                <Route path={APP_ROUTES.HOME} element={<HomePage />} />
-
                {/* Routes de connexion */}
                <Route path={APP_ROUTES.SIGN_IN} element={<HomePage />} />
 

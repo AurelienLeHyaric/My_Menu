@@ -1,6 +1,4 @@
 import React from "react"
-import { Link } from "react-router-dom"
-import { APP_ROUTES } from "../../utils/constants"
 import "./Navbar.scss"
 
 function Navbar({ onOpenOverlay }) {
@@ -15,8 +13,7 @@ function Navbar({ onOpenOverlay }) {
                <a href="#pricing">Tarifs</a>
             </li>
             <li>
-               <Link
-                  to={APP_ROUTES.SIGN_IN}
+               <button
                   className="login-link"
                   onClick={(e) => {
                      e.preventDefault()
@@ -24,7 +21,7 @@ function Navbar({ onOpenOverlay }) {
                   }}
                >
                   Se connecter
-               </Link>
+               </button>
             </li>
          </ul>
       </nav>
