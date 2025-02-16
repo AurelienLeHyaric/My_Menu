@@ -30,7 +30,7 @@ function Menu() {
          <div className="menu-sections2">
             <ul>
                <li>
-                  <NavLink to="/dashboard/moncompte">Se déconnecter</NavLink>
+                  <NavLink to="/logout">Se déconnecter</NavLink>
                </li>
                <li>
                   <NavLink to="/dashboard/moncompte">Mentions légales</NavLink>

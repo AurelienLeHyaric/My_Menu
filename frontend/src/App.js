@@ -1,10 +1,11 @@
 import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import HomePage from "./pages/HomePage" // Page d'accueil
+import HomePage from "./pages/HomePage"
 import DashboardLayout from "./components/DashboardLayout/DashboardLayout"
 import Dashboard from "./pages/DashboardPage"
 import MesMenus from "./pages/MenusPage"
 import AddMenuPage from "./pages/AddMenuPage"
+import LogoutPage from "./pages/LogoutPage"
 import { APP_ROUTES } from "./utils/constants"
 import "./App.scss"
 
@@ -17,6 +18,8 @@ function App() {
                <Route path={APP_ROUTES.HOME} element={<HomePage />} />
                {/* Routes de connexion */}
                <Route path={APP_ROUTES.SIGN_IN} element={<HomePage />} />
+               {/* Route de déconnexion */}
+               <Route path={APP_ROUTES.LOGOUT} element={<LogoutPage />} />
 
                {/* Route parent pour le DashboardLayout */}
                <Route path={APP_ROUTES.DASHBOARD} element={<DashboardLayout />}>

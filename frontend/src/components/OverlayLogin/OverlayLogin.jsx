@@ -13,13 +13,6 @@ function LoginOverlay({ onNext, onClose }) {
    const handleSubmit = async (e) => {
       e.preventDefault()
       try {
-         // D'abord, appelle l'endpoint de logout pour effacer l'ancien cookie
-         await fetch(`${API_ROUTES.LOGOUT}`, {
-            method: "POST",
-            credentials: "include",
-         })
-
-         // Ensuite, procède à la demande d'envoi du magic link
          const response = await fetch(API_ROUTES.LOGIN, {
             method: "POST",
             credentials: "include",

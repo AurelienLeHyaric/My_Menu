@@ -20,13 +20,10 @@ export const sendMagicLink = async (email, magicLink) => {
       html: `<p>Cliquez sur ce lien pour vous connecter : <a href="${magicLink}">Connexion</a></p>`,
    }
 
-   //optionnel:
    try {
       const info = await transporter.sendMail(mailOptions)
       console.log("E-mail envoyé :", info.response)
    } catch (error) {
       console.error("Erreur d'envoi d'email :", error)
    }
-
-   await transporter.sendMail(mailOptions)
 }
