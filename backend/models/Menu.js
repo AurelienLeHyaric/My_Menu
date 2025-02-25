@@ -27,8 +27,18 @@ menuSchema.pre("save", async function (next) {
    if (!this.isNew) return next()
 
    const Menu = mongoose.model("Menu", menuSchema)
-   const menuCount = await Menu.countDocuments({ user: this.user })
-   this.name = `Menu ${menuCount + 1}`
+
+   // Récupérer tous les noms de menus existants pour l'utilisateur
+   const existingMenus = await Menu.find({ user: this.user }).select("name")
+
+   // Extraire les numéros de menu existants
+   const menuNumbers = existingMenus.map((menu) => parseInt(menu.name.replace("Menu ", ""), 10)).filter((num) => !isNaN(num))
+
+   // Trouver le plus grand numéro existant
+   const maxMenuNumber = menuNumbers.length > 0 ? Math.max(...menuNumbers) : 0
+
+   // Nommer le nouveau menu avec le numéro suivant
+   this.name = `Menu ${maxMenuNumber + 1}`
 
    next()
 })
